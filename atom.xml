@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[My Octopress Blog]]></title>
+  <link href="http://heack.github.com/atom.xml" rel="self"/>
+  <link href="http://heack.github.com/"/>
+  <updated>2013-03-16T03:27:32+08:00</updated>
+  <id>http://heack.github.com/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[test]]></title>
+    <link href="http://heack.github.com/blog/2013/03/16/test/"/>
+    <updated>2013-03-16T03:20:00+08:00</updated>
+    <id>http://heack.github.com/blog/2013/03/16/test</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+</feed>
