@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[关注人工智能]]></title>
-  <link href="http://heack.github.com/atom.xml" rel="self"/>
+  <title><![CDATA[Category: 人工智能 云智慧 进化 | 关注人工智能]]></title>
+  <link href="http://heack.github.com/blog/categories/ren-gong-zhi-neng-yun-zhi-hui-jin-hua/atom.xml" rel="self"/>
   <link href="http://heack.github.com/"/>
   <updated>2013-03-16T23:33:36+08:00</updated>
   <id>http://heack.github.com/</id>
@@ -18,17 +18,17 @@
     <link href="http://heack.github.com/blog/2013/03/16/ji-qi-ren-de-mo-wei-wang/"/>
     <updated>2013-03-16T23:13:00+08:00</updated>
     <id>http://heack.github.com/blog/2013/03/16/ji-qi-ren-de-mo-wei-wang</id>
-    <content type="html"><![CDATA[<p>欧洲的科学家们刚刚推出了Raptuya——一个帮助机器人应付人类世界的在线信息数据库。Raptura数据库作为&#8221;机器人的万维网&#8221;，也是&#8221;欧洲机器人地球项目&#8221;(European RoboEarth Project)的一部分。该项目旨在让机器人可以下载互联网上的信息，以学习它们的环境(environment)、软件组件(software components)、对象(objects)、图像(images)，以及如何执行某些任务。</p>
+    <content type="html"><![CDATA[<p>欧洲的科学家们刚刚推出了Raptuya——一个帮助机器人应付人类世界的在线信息数据库。Raptura数据库作为"机器人的万维网"，也是"欧洲机器人地球项目"(European RoboEarth Project)的一部分。该项目旨在让机器人可以下载互联网上的信息，以学习它们的环境(environment)、软件组件(software components)、对象(objects)、图像(images)，以及如何执行某些任务。</p>
 
 <p>Raptuya的推出是RoboEarth项目的第一步。在Ratuya的帮助下，机器人无需单独地学习如何处理对象和情境。通过在云端网络下载必要的信息，Raptuya将有助于加快这个过程。Raptuya也可以帮助机器人做运算，这样就可以轻松地解决周边导航、执行任务和识别语言的问题。</p>
 
-<p>科学家们希望该在线数据库可以降低机器人的成本(因为对板载存储和计算量的需求都更少了)。Raptuya数据库的信息有两类提供者——人们为机器人创建信息；而机器人也可以上传它们的信息。所有的信息皆为机器可读的格式(a machine-readable format)，对&#8221;机器人&#8221;来说，&#8221;通俗易懂&#8221;。</p>
+<p>科学家们希望该在线数据库可以降低机器人的成本(因为对板载存储和计算量的需求都更少了)。Raptuya数据库的信息有两类提供者——人们为机器人创建信息；而机器人也可以上传它们的信息。所有的信息皆为机器可读的格式(a machine-readable format)，对"机器人"来说，"通俗易懂"。</p>
 
 <p>RoboEarth设计为机器人创新引路，对无人飞机和自动驾驶汽车来说，其也将证明它的用处。牛津大学的科学家们正在为他们的自动驾驶汽车系统，寻找一种通过互联网，下载环境信息的方法。看起来，他们应该有答案了。</p>
 
 <p>随着移动机器人侍者的价格变得更加实惠(以及有能力识别更生活化的语言)，我们也将迎来与《摩登家庭》(The Jetsons)有几分相似的生活。</p>
 
-<p>原文地址:<a href="http://www.bbc.co.uk/news/technology-21714191">BBC Web-based &#8216;brain&#8217; for robots goes live</a></p>
+<p>原文地址:<a href="http://www.bbc.co.uk/news/technology-21714191">BBC Web-based 'brain' for robots goes live</a></p>
 
 <h1>小亮解读</h1>
 
