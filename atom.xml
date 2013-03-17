@@ -4,7 +4,7 @@
   <title><![CDATA[关注人工智能]]></title>
   <link href="http://heack.github.com/atom.xml" rel="self"/>
   <link href="http://heack.github.com/"/>
-  <updated>2013-03-17T23:13:09+08:00</updated>
+  <updated>2013-03-17T23:14:55+08:00</updated>
   <id>http://heack.github.com/</id>
   <author>
     <name><![CDATA[AI小亮]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Conway的生命游戏mac实现]]></title>
+    <link href="http://heack.github.com/blog/2013/03/17/conwayde-sheng-ming-you-xi-macshi-xian/"/>
+    <updated>2013-03-17T22:52:00+08:00</updated>
+    <id>http://heack.github.com/blog/2013/03/17/conwayde-sheng-ming-you-xi-macshi-xian</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[机器人的云智慧]]></title>

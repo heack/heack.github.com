@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Conway | 关注人工智能]]></title>
+  <link href="http://heack.github.com/blog/categories/conway/atom.xml" rel="self"/>
+  <link href="http://heack.github.com/"/>
+  <updated>2013-03-17T23:14:55+08:00</updated>
+  <id>http://heack.github.com/</id>
+  <author>
+    <name><![CDATA[AI小亮]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Conway的生命游戏mac实现]]></title>
+    <link href="http://heack.github.com/blog/2013/03/17/conwayde-sheng-ming-you-xi-macshi-xian/"/>
+    <updated>2013-03-17T22:52:00+08:00</updated>
+    <id>http://heack.github.com/blog/2013/03/17/conwayde-sheng-ming-you-xi-macshi-xian</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+</feed>
