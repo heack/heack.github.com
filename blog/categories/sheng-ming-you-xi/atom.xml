@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: 生命游戏 | 关注人工智能]]></title>
-  <link href="http://heack.github.com/blog/categories/sheng-ming-you-xi/atom.xml" rel="self"/>
-  <link href="http://heack.github.com/"/>
-  <updated>2013-03-20T17:23:32+08:00</updated>
-  <id>http://heack.github.com/</id>
+  <link href="http://whomake.me/blog/categories/sheng-ming-you-xi/atom.xml" rel="self"/>
+  <link href="http://whomake.me/"/>
+  <updated>2013-03-20T17:26:44+08:00</updated>
+  <id>http://whomake.me/</id>
   <author>
     <name><![CDATA[AI亮子]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Conway的生命游戏mac实现]]></title>
-    <link href="http://heack.github.com/blog/2013/03/17/conwayde-sheng-ming-you-xi-macshi-xian/"/>
+    <link href="http://whomake.me/blog/2013/03/17/conwayde-sheng-ming-you-xi-macshi-xian/"/>
     <updated>2013-03-17T22:52:00+08:00</updated>
-    <id>http://heack.github.com/blog/2013/03/17/conwayde-sheng-ming-you-xi-macshi-xian</id>
+    <id>http://whomake.me/blog/2013/03/17/conwayde-sheng-ming-you-xi-macshi-xian</id>
     <content type="html"><![CDATA[<p><a href="http://zh.wikipedia.org/wiki/%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F">生命游戏介绍</a><br/>
 代码的下载地址: <a href="https://github.com/heack/simulate-2D-world-game-of-life">小亮的Github</a></p>
 

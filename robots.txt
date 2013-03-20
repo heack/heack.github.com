@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://heack.github.com/sitemap.xml 
+Sitemap: http://whomake.me/sitemap.xml 
