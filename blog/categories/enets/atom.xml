@@ -4,7 +4,7 @@
   <title><![CDATA[Category: enets | 关注人工智能]]></title>
   <link href="http://whomake.me/blog/categories/enets/atom.xml" rel="self"/>
   <link href="http://whomake.me/"/>
-  <updated>2013-03-28T16:31:36+08:00</updated>
+  <updated>2013-03-28T16:33:16+08:00</updated>
   <id>http://whomake.me/</id>
   <author>
     <name><![CDATA[AI亮子]]></name>
@@ -25,10 +25,7 @@
 protected/modules/payment/modules/gateway/components/Gateway.php  
 </code></p>
 
-<ol>
-<li><strong>修改charge方法</strong></li>
-</ol>
-
+<h1>1. <strong>修改charge方法</strong></h1>
 
 <p>```</p>
 
@@ -112,10 +109,7 @@ array(3) {
 
 <p>有需要什么的就提取什么发送给payment url.</p>
 
-<ol>
-<li><strong>从payment的反馈.</strong></li>
-</ol>
-
+<h1>2. <strong>从payment的反馈.</strong></h1>
 
 <p>一般你会在payment gateway那里定义一个返回的success or failure的url, 你可以在couponic的</p>
 
@@ -173,13 +167,11 @@ protected/modules/payment/modules/gateway/components/Gateway.php
 
 <p>```</p>
 
-<ol>
-<li><strong>最后,需要添加Custom Payment Gateway到支付的可选菜单里面.</strong><br/>
-在后台Admin setup里面
-Custom Payment Gateway里面勾选
-Gateway and standalone payment method</li>
-</ol>
+<h1>3. <strong>最后,需要添加Custom Payment Gateway到支付的可选菜单里面.</strong></h1>
 
+<p>在后台Admin setup里面
+Custom Payment Gateway里面勾选
+Gateway and standalone payment method</p>
 
 <p><strong>大功告成</strong></p>
 ]]></content>

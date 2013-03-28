@@ -8,7 +8,7 @@
     
 	<meta name="description" content="以下以手工添加enets payment gateway 到Honeybay 作为事例.
 打开: 1
-protected/modules/payment/modules/gateway/components/Gateway.php 修改charge方法 1
+protected/modules/payment/modules/gateway/components/Gateway.php 1. 修改charge方法 1
 2
 3
 4
@@ -16,8 +16,7 @@ protected/modules/payment/modules/gateway/components/Gateway.php 修改charge方
 6
 7
 8
-9
-10 &hellip;">
+9 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -111,10 +110,7 @@ protected/modules/payment/modules/gateway/components/Gateway.php 修改charge方
 </pre></td><td class='code'><pre><code class=''><span class='line'>protected/modules/payment/modules/gateway/components/Gateway.php  </span></code></pre></td></tr></table></div></figure>
 
 
-<ol>
-<li><strong>修改charge方法</strong></li>
-</ol>
-
+<h1>1. <strong>修改charge方法</strong></h1>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -252,10 +248,7 @@ protected/modules/payment/modules/gateway/components/Gateway.php 修改charge方
 
 <p>有需要什么的就提取什么发送给payment url.</p>
 
-<ol>
-<li><strong>从payment的反馈.</strong></li>
-</ol>
-
+<h1>2. <strong>从payment的反馈.</strong></h1>
 
 <p>一般你会在payment gateway那里定义一个返回的success or failure的url, 你可以在couponic的</p>
 
@@ -325,13 +318,11 @@ protected/modules/payment/modules/gateway/components/Gateway.php 修改charge方
 
 <p></p>
 
-<ol>
-<li><strong>最后,需要添加Custom Payment Gateway到支付的可选菜单里面.</strong><br/>
-在后台Admin setup里面
-Custom Payment Gateway里面勾选
-Gateway and standalone payment method</li>
-</ol>
+<h1>3. <strong>最后,需要添加Custom Payment Gateway到支付的可选菜单里面.</strong></h1>
 
+<p>在后台Admin setup里面
+Custom Payment Gateway里面勾选
+Gateway and standalone payment method</p>
 
 <p><strong>大功告成</strong></p>
 </div>
