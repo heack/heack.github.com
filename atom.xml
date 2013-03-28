@@ -4,7 +4,7 @@
   <title><![CDATA[关注人工智能]]></title>
   <link href="http://whomake.me/atom.xml" rel="self"/>
   <link href="http://whomake.me/"/>
-  <updated>2013-03-20T17:29:17+08:00</updated>
+  <updated>2013-03-28T16:31:36+08:00</updated>
   <id>http://whomake.me/</id>
   <author>
     <name><![CDATA[AI亮子]]></name>
@@ -12,6 +12,244 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Couponic 电商网站添加Custom Payment Gateway的方法]]></title>
+    <link href="http://whomake.me/blog/2013/03/28/couponic-dian-shang-wang-zhan-tian-jia-custom-payment-gatewayde-fang-fa/"/>
+    <updated>2013-03-28T16:07:00+08:00</updated>
+    <id>http://whomake.me/blog/2013/03/28/couponic-dian-shang-wang-zhan-tian-jia-custom-payment-gatewayde-fang-fa</id>
+    <content type="html"><![CDATA[<p>以下以手工添加enets payment gateway 到<a href="http://www.honeybay.com">Honeybay</a> 作为事例.
+打开:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>protected/modules/payment/modules/gateway/components/Gateway.php  </span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li><strong>修改charge方法</strong></li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>public function charge($data)
+</span><span class='line'>{
+</span><span class='line'>  $form = '&lt;form name="cart" action="https://www.enets.sg/enets2/enps.do" method="post" id="gatewayPaymentForm" style="display:none"&gt;
+</span><span class='line'>      &lt;input type="hidden" name="amount" value="'.sprintf('%.2f',$data['amount']).'"&gt; 
+</span><span class='line'>      &lt;input type="hidden" name="txnRef" value="'.$data['orderId'].'-'.uniqid().'"&gt; 
+</span><span class='line'>      &lt;input type="hidden" name="mid" value="YOUR_MID"&gt; 
+</span><span class='line'>      &lt;input type="hidden" name="umapiType" value="lite"&gt;
+</span><span class='line'>      &lt;input type="submit" name="submit" value="" id="gatewayPaymentFormSubmit"&gt;
+</span><span class='line'>  &lt;/form&gt;';                                               
+</span><span class='line'>  $form.= CHtml::script('jQuery("#gatewayPaymentFormSubmit").click();');
+</span><span class='line'>  return array('status' =&gt; true, 'form' =&gt; $form);
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这个$data为paymentcart传递过来的order相关的数据,我post如下:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>
+</span><span class='line'>data
+</span><span class='line'>array(5) {
+</span><span class='line'>  ["params"]=&gt;
+</span><span class='line'>  object(CAttributeCollection)#186 (5) {
+</span><span class='line'>    ["caseSensitive"]=&gt;
+</span><span class='line'>    bool(true)
+</span><span class='line'>    ["_d":"CMap":private]=&gt;
+</span><span class='line'>    array(8) {
+</span><span class='line'>      ["version"]=&gt;
+</span><span class='line'>      string(5) "1.0.0"
+</span><span class='line'>      ["name"]=&gt;
+</span><span class='line'>      string(5) "Enets"
+</span><span class='line'>      ["test"]=&gt;
+</span><span class='line'>      string(1) "0"
+</span><span class='line'>      ["canAuthorize"]=&gt;
+</span><span class='line'>      string(0) ""
+</span><span class='line'>      ["canVoid"]=&gt;
+</span><span class='line'>      string(0) ""
+</span><span class='line'>      ["canRefund"]=&gt;
+</span><span class='line'>      string(0) ""
+</span><span class='line'>      ["canDirect"]=&gt;
+</span><span class='line'>      string(0) ""
+</span><span class='line'>      ["cconly"]=&gt;
+</span><span class='line'>      string(1) "0"
+</span><span class='line'>    }
+</span><span class='line'>    ["_r":"CMap":private]=&gt;
+</span><span class='line'>    bool(false)
+</span><span class='line'>    ["_e":"CComponent":private]=&gt;
+</span><span class='line'>    NULL
+</span><span class='line'>    ["_m":"CComponent":private]=&gt;
+</span><span class='line'>    NULL
+</span><span class='line'>  }
+</span><span class='line'>  ["currency"]=&gt;
+</span><span class='line'>  string(3) "SGD"
+</span><span class='line'>  ["cart"]=&gt;
+</span><span class='line'>  array(1) {
+</span><span class='line'>    [0]=&gt;
+</span><span class='line'>    array(3) {
+</span><span class='line'>      ["name"]=&gt;
+</span><span class='line'>      string(31) "Special+Today-Philips+Air+Fryer"
+</span><span class='line'>      ["amount"]=&gt;
+</span><span class='line'>      string(2) "45"
+</span><span class='line'>      ["quantity"]=&gt;
+</span><span class='line'>      int(1)
+</span><span class='line'>    }
+</span><span class='line'>  }
+</span><span class='line'>  ["amount"]=&gt;
+</span><span class='line'>  int(45)
+</span><span class='line'>  ["orderId"]=&gt;
+</span><span class='line'>  string(4) "1709"
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>有需要什么的就提取什么发送给payment url.</p>
+
+<ol>
+<li><strong>从payment的反馈.</strong></li>
+</ol>
+
+
+<p>一般你会在payment gateway那里定义一个返回的success or failure的url, 你可以在couponic的</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>protected/config/public/instance.php</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这里来添加自定义url
+我的是:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> 'payment/enets/success' =&gt; 'payment/gateway/ipn',</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ipn文件的位置是</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>protected/modules/payment/modules/gateway/worklets/WPaymentGatewayIpn.php</span></code></pre></td></tr></table></div></figure>
+
+
+<p>如果需要加入什么可以在这里进行修改.很庆幸的是,我这边不需要做任何修改.
+请注意这一行:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$r = $g-&gt;validate(array(
+</span><span class='line'>      'params' =&gt; $this-&gt;module-&gt;params,
+</span><span class='line'>  ));</span></code></pre></td></tr></table></div></figure>
+
+
+<p>    <br/>
+但是ipn文件是要从Gateway.php的validate方法里面获得相关的参数,
+让我们打开:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>protected/modules/payment/modules/gateway/components/Gateway.php  </span></code></pre></td></tr></table></div></figure>
+
+
+<p>修改里面的validate()方法</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>public function validate()
+</span><span class='line'>{                       
+</span><span class='line'>  $status = $_GET['status'];
+</span><span class='line'>  $retArray = array();      
+</span><span class='line'>  $retArray['status'] = strtolower($status) == 'succ'? true:false;
+</span><span class='line'>  $retArray['type'] = 'charge';
+</span><span class='line'>  $retArray['orderId'] = xxx;//it's from your payment gateway callback
+</span><span class='line'>  $retArray['gatewayId'] = $_GET['txnRef'];
+</span><span class='line'>  $retArray['after'] = 'redirect';
+</span><span class='line'>  $retArray['redirectUrl'] = aUrl('/payment/success',array('id' =&gt; $pieces[0]));
+</span><span class='line'>  return $retArray;
+</span><span class='line'>} </span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<ol>
+<li><strong>最后,需要添加Custom Payment Gateway到支付的可选菜单里面.</strong><br/>
+在后台Admin setup里面
+Custom Payment Gateway里面勾选
+Gateway and standalone payment method</li>
+</ol>
+
+
+<p><strong>大功告成</strong></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Google宣布收购一家专注于神经网络研究的初创公司]]></title>

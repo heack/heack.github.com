@@ -3,12 +3,21 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>关注人工智能</title>
+	<title>Couponic 电商网站添加Custom Payment Gateway的方法 - 关注人工智能</title>
     <meta name="author" content="AI亮子">
     
-	<meta name="description" content="Published on: Mar 28th, 2013 Tags: couponic, enets, payment 以下以手工添加enets payment gateway 到Honeybay 作为事例.
+	<meta name="description" content="以下以手工添加enets payment gateway 到Honeybay 作为事例.
 打开: 1
-protected/modules/payment/modules/ &hellip;">
+protected/modules/payment/modules/gateway/components/Gateway.php 修改charge方法 1
+2
+3
+4
+5
+6
+7
+8
+9
+10 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -93,40 +102,9 @@ protected/modules/payment/modules/ &hellip;">
 <div id="toload">
 <!-- begin toload --> 
     <div id="content" class="inner">
-        
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2013/03/28/couponic-dian-shang-wang-zhan-tian-jia-custom-payment-gatewayde-fang-fa/">
-		
-			Couponic 电商网站添加Custom Payment Gateway的方法</a>
-	</h2>
-    <div class="entry-content">
-    <div class="meta">
-      <div class="date">Published on: 
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-03-28T16:07:00+08:00" pubdate data-updated="true">Mar 28<span>th</span>, 2013</time></div>
-      <div class="tags">Tags: 
-
-
-	<a class='category' href='/blog/categories/couponic/'>couponic</a>, <a class='category' href='/blog/categories/enets/'>enets</a>, <a class='category' href='/blog/categories/payment/'>payment</a>
-
-
-</div>
-    </div>
-		<p>以下以手工添加enets payment gateway 到<a href="http://www.honeybay.com">Honeybay</a> 作为事例.
+        <article class="post">
+	<h2 class="title">Couponic 电商网站添加Custom Payment Gateway的方法</h2>
+	<div class="entry-content"><p>以下以手工添加enets payment gateway 到<a href="http://www.honeybay.com">Honeybay</a> 作为事例.
 打开:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -356,192 +334,49 @@ Gateway and standalone payment method</li>
 
 
 <p><strong>大功告成</strong></p>
-
-		
-		
-	</div>
+</div>
 
 <div class="meta">
 	
-		<span class="comments"><a href="/blog/2013/03/28/couponic-dian-shang-wang-zhan-tian-jia-custom-payment-gatewayde-fang-fa//index.html#disqus_thread">Comments</a></span>
+		<span class="comments"><a href="/blog/2013/03/28/couponic-dian-shang-wang-zhan-tian-jia-custom-payment-gatewayde-fang-fa/#disqus_thread">Comments</a></span>
 	
 </div>
 </article>
 
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2013/03/18/googlexuan-bu-shou-gou-%5B%3F%5D-jia-zhuan-zhu-yu-shen-jing-wang-luo-yan-jiu-de-chu-chuang-gong-si/">
-		
-			Google宣布收购一家专注于神经网络研究的初创公司</a>
-	</h2>
-    <div class="entry-content">
-    <div class="meta">
-      <div class="date">Published on: 
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-03-18T14:42:00+08:00" pubdate data-updated="true">Mar 18<span>th</span>, 2013</time></div>
-      <div class="tags">Tags: 
-
-
-	<a class='category' href='/blog/categories/dnnreasearch/'>DNNreasearch</a>, <a class='category' href='/blog/categories/google/'>Google</a>, <a class='category' href='/blog/categories/shen-jing-wang-luo/'>神经网络</a>
-
-
-</div>
-    </div>
-		<p>谷歌向来都是一家会不断吸收具有前景的初创公司，进而不断地加大其在互联网服务基础设施的实力。据外媒报道，谷歌又在这周收购了DNNreasearch Inc.。神经网络&#8211;人工智能计算是一种模仿动物大脑神经的数学算法。它出现于20世纪40年代，在50年代得到了研究人员的注意，并在60年代开始运用到计算设备中。</p>
-
-<p>不过，这种技术在数字时代初期却遭到了人们的冷落。到了20世纪80年代末，由于研究人员发现了<a href="http://en.wikipedia.org/wiki/Backpropagation">反向传播 (Backpropogation)</a>算法，神经网络技术又重新绽放光芒。</p>
-
-<p>DNNreasearch就是一家深度研究神经网络的初创公司，它由来自多伦多大学计算机科学系的教授Geoffrey Hinton以及他的两位研究生学生Alex Krizhevsky和Ilya Sutskever联合创办，他们主要将精力集中在物体识别的研究上。</p>
-
-<p>谷歌之所以收购了这家初创公司，则是希望可以将他们成熟的神经网络技术运用到公司的图片搜索中。据悉，谷歌已经在数字图片抽象元素的识别中使用了多种人工智能技术，他们甚至还考虑过使用量子计算机来完成这一项工作。</p>
-
-<p>另外，谷歌介绍，DNNreasearch的技术除了可以运用到图片搜索之外，还可以在音频文件搜索中得到很好的利用。</p>
-
-<p>谷歌并没有对外公司收购DNNreasearch的价格，不过它倒是透露了公司已经给Hinton教授提供了$60万的研究资金。现在，Hinton教授则要不断地穿梭在多伦多大学和谷歌总部之间继续他的研究工作。</p>
-
-		
-		
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	  <span>
+	  <iframe 
+	    width="86" 
+	    scrolling="no" 
+	    height="16" 
+	    frameborder="0" 
+	    src=
+	      "http://hits.sinajs.cn/A1/weiboshare.html?url=http://whomake.me/blog/2013/03/28/couponic-dian-shang-wang-zhan-tian-jia-custom-payment-gatewayde-fang-fa/&type=6&ralateUid=2087353047&language=zh_cn" allowtransparency="true">
+	  </iframe>
+	  </span>
+	
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+	  
+	
+	<a class="addthis_counter addthis_pill_style"></a>
 	</div>
-
-<div class="meta">
-	
-		<span class="comments"><a href="/blog/2013/03/18/googlexuan-bu-shou-gou-%5B%3F%5D-jia-zhuan-zhu-yu-shen-jing-wang-luo-yan-jiu-de-chu-chuang-gong-si//index.html#disqus_thread">Comments</a></span>
-	
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
 </div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2013/03/17/conwayde-sheng-ming-you-xi-macshi-xian/">
-		
-			Conway的生命游戏mac实现</a>
-	</h2>
-    <div class="entry-content">
-    <div class="meta">
-      <div class="date">Published on: 
 
 
 
-
-
-
-
-
-  
-
-
-<time datetime="2013-03-17T22:52:00+08:00" pubdate data-updated="true">Mar 17<span>th</span>, 2013</time></div>
-      <div class="tags">Tags: 
-
-
-	<a class='category' href='/blog/categories/conway/'>Conway</a>, <a class='category' href='/blog/categories/sheng-ming-you-xi/'>生命游戏</a>
-
-
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-    </div>
-		<p><a href="http://zh.wikipedia.org/wiki/%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F">生命游戏介绍</a><br/>
-代码的下载地址: <a href="https://github.com/heack/simulate-2D-world-game-of-life">小亮的Github</a></p>
-
-<h1>小亮观点</h1>
-
-<p>康威的细胞自动机,在很大程度上,很有可能是现在弦理论的一个二维简版.根据国外科学家的研究,如果要在三维世界中形成类似于人这样复杂的生命体的话,那么需要非常复杂的规则.就像弦一样,不同的震动形成不同的粒子表现.那么,有以下的问题很值得思考:<br/>
-1. 规则是一开始就定下来的,还是规则也有一种类似于自然选择的机制.这就像我们的物理理论是固定的还是可能是变化的,甚至是为了产生生命体而不断的进行自然选择.比如万有引力的常数,如果太大,可能宇宙最终会坍缩,如果太小,又会太寂寞.那么为什么恰好是这个参数呢?有人说正好我们在这里,所以正好是这个参数.我认为,假若上帝真正存在的话,假若他是一个哪有那么多的功夫去生成这么多的宇宙,来研究这个参数那个参数恰好是多少啊?!假若上帝也是一个程序员,我们是在一个虚拟的世界当中,那么模拟我们的这个宇宙,模拟出一个可以有生命的宇宙,那调整各种参数,也是很耗费时间的.再说,上帝这么做的意义何在?<br/>
-2. 爱因斯坦说过他不相信上帝是掷色子的.我相信.物理定律必然有其随机的一面.否则上帝未免会觉得这个世界太无聊了一点,因为他对未来都知道了嘛!</p>
-
-		
-		
-	</div>
-
-<div class="meta">
-	
-		<span class="comments"><a href="/blog/2013/03/17/conwayde-sheng-ming-you-xi-macshi-xian//index.html#disqus_thread">Comments</a></span>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2013/03/16/ji-qi-ren-de-mo-wei-wang/">
-		
-			机器人的云智慧</a>
-	</h2>
-    <div class="entry-content">
-    <div class="meta">
-      <div class="date">Published on: 
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-03-16T23:13:00+08:00" pubdate data-updated="true">Mar 16<span>th</span>, 2013</time></div>
-      <div class="tags">Tags: 
-
-
-	<a class='category' href='/blog/categories/yun-zhi-hui/'>云智慧</a>, <a class='category' href='/blog/categories/ren-gong-zhi-neng/'>人工智能</a>, <a class='category' href='/blog/categories/jin-hua/'>进化</a>
-
-
-</div>
-    </div>
-		<p>欧洲的科学家们刚刚推出了Raptuya——一个帮助机器人应付人类世界的在线信息数据库。Raptura数据库作为&#8221;机器人的万维网&#8221;，也是&#8221;欧洲机器人地球项目&#8221;(European RoboEarth Project)的一部分。该项目旨在让机器人可以下载互联网上的信息，以学习它们的环境(environment)、软件组件(software components)、对象(objects)、图像(images)，以及如何执行某些任务。</p>
-
-<p>Raptuya的推出是RoboEarth项目的第一步。在Ratuya的帮助下，机器人无需单独地学习如何处理对象和情境。通过在云端网络下载必要的信息，Raptuya将有助于加快这个过程。Raptuya也可以帮助机器人做运算，这样就可以轻松地解决周边导航、执行任务和识别语言的问题。</p>
-
-<p>科学家们希望该在线数据库可以降低机器人的成本(因为对板载存储和计算量的需求都更少了)。Raptuya数据库的信息有两类提供者——人们为机器人创建信息；而机器人也可以上传它们的信息。所有的信息皆为机器可读的格式(a machine-readable format)，对&#8221;机器人&#8221;来说，&#8221;通俗易懂&#8221;。</p>
-
-<p>RoboEarth设计为机器人创新引路，对无人飞机和自动驾驶汽车来说，其也将证明它的用处。牛津大学的科学家们正在为他们的自动驾驶汽车系统，寻找一种通过互联网，下载环境信息的方法。看起来，他们应该有答案了。</p>
-
-<p>随着移动机器人侍者的价格变得更加实惠(以及有能力识别更生活化的语言)，我们也将迎来与《摩登家庭》(The Jetsons)有几分相似的生活。</p>
-
-<p>原文地址:<a href="http://www.bbc.co.uk/news/technology-21714191">BBC Web-based &#8216;brain&#8217; for robots goes live</a></p>
-
-<h1>小亮观点</h1>
-
-<p>正如米歇尔·沃尔德罗普《复杂——诞生于秩序与混沌边缘的科学》一书中说的那样,生命的诞生,不是上帝的安排,而是与周围的环境不断地互相作用的结果,这个环境可能是无生命的环境,亦或是充满其他生命的环境.<br/>
-生命的根本是<strong>进化</strong>-<strong>彼此适应</strong>.<br/>
-而这则新闻我看到了这种进化的可能性.<br/>
-可是,当这种进化,到了何种的地步,才算是人工智能呢? 如果仅仅是写了一个小程序,按照人事先设置的条件去响应用户,就像siri做的那样,这算是人工智能吗?<br/>
-如果可以模拟一个蚂蚁的群体,这算是人工智能吗?如果可以模拟一个小狗的行为,那么这是人工智能吗?水熊虫可以算作有智能吗?知了呢?蛇呢?黑猩猩呢?人呢?</p>
-
-<p><em>那么依您之见,何之为人工智能呢?</em></p>
-
-		
-		
-	</div>
-
-<div class="meta">
-	
-		<span class="comments"><a href="/blog/2013/03/16/ji-qi-ren-de-mo-wei-wang//index.html#disqus_thread">Comments</a></span>
-	
-</div>
-</article>
-
-<nav id="pagenavi">
-    
-    
-    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
-</nav>
+</section>
 
     </div>
     <footer id="footer">
@@ -568,7 +403,10 @@ Gateway and standalone payment method</li>
       var disqus_shortname = 'eric';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://whomake.me/blog/2013/03/28/couponic-dian-shang-wang-zhan-tian-jia-custom-payment-gatewayde-fang-fa/';
+        var disqus_url = 'http://whomake.me/blog/2013/03/28/couponic-dian-shang-wang-zhan-tian-jia-custom-payment-gatewayde-fang-fa/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
