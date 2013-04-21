@@ -4,7 +4,7 @@
   <title><![CDATA[关注人工智能]]></title>
   <link href="http://whomake.me/atom.xml" rel="self"/>
   <link href="http://whomake.me/"/>
-  <updated>2013-04-21T21:29:16+08:00</updated>
+  <updated>2013-04-21T22:36:48+08:00</updated>
   <id>http://whomake.me/</id>
   <author>
     <name><![CDATA[AI亮子]]></name>
@@ -168,17 +168,24 @@
 <span class='line-number'>146</span>
 <span class='line-number'>147</span>
 <span class='line-number'>148</span>
+<span class='line-number'>149</span>
+<span class='line-number'>150</span>
+<span class='line-number'>151</span>
+<span class='line-number'>152</span>
+<span class='line-number'>153</span>
+<span class='line-number'>154</span>
+<span class='line-number'>155</span>
+<span class='line-number'>156</span>
+<span class='line-number'>157</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>
-</span><span class='line'>;define points
-</span><span class='line'>(setq env `((1.0 1.0) (2.0 7.0) (2.0 6.0) (2.0 4.0) (3.0 2.0) (5.0 8.0) (7.0 7.0 ) (7.0 4.0 ) ( 7.0 1.0 )))
-</span><span class='line'>
+</span><span class='line'>(setq env `((1.0 1.0) (2.0 7.0) (2.0 6.0) (2.0 4.0) (3.0 2.0) (5.0 8.0) (7.0 7.0 ) (7.0 4.0 ) ( 7.0 1.0 ) (3.0 2.0) (0.0 3.0) (5.0 3.0) (4.0 5.0)))
 </span><span class='line'>(setf ways `())
 </span><span class='line'>(setf currentways `())
 </span><span class='line'>(setf number_population 60)
-</span><span class='line'>(setf better_population 30)
-</span><span class='line'>(setf child_population 30)
+</span><span class='line'>(setf better_population 40)
+</span><span class='line'>(setf child_population 20)
 </span><span class='line'>
-</span><span class='line'>;get Random Way to fill the ways.
+</span><span class='line'>
 </span><span class='line'>(defun getRandomWay()
 </span><span class='line'>  (let ((ret) (tempenv) (num 1))
 </span><span class='line'>    (setf tempenv (copy-sequence env))
@@ -193,12 +200,16 @@
 </span><span class='line'>    )
 </span><span class='line'>)
 </span><span class='line'>
-</span><span class='line'>;basic method
+</span><span class='line'>
+</span><span class='line'>
 </span><span class='line'>(defun getTwoPointLength(a b)
 </span><span class='line'>  (sqrt (+ (expt (- (car a) (car b)) 2) (expt (- (cadr a) (cadr b)) 2)))
 </span><span class='line'>)
 </span><span class='line'>
-</span><span class='line'>;caculate the way's length
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'> 
+</span><span class='line'>
 </span><span class='line'>(defun caculateLength(way)
 </span><span class='line'>  (let ((i 0) (ret 0.0))
 </span><span class='line'>    ;(message "way is : %s" way)
@@ -212,7 +223,8 @@
 </span><span class='line'>    )
 </span><span class='line'>)
 </span><span class='line'>
-</span><span class='line'>; use Tournament to get the next generation.
+</span><span class='line'>
+</span><span class='line'>
 </span><span class='line'>(defun getRandomTwo(population)
 </span><span class='line'>  (let ((tempways population) (ret) (temp1) (temp2))
 </span><span class='line'>    (setq temp1 (elt tempways (random (length tempways))))
@@ -223,7 +235,8 @@
 </span><span class='line'>    ret)
 </span><span class='line'>)
 </span><span class='line'>
-</span><span class='line'>; exchange a gene in way a and b at position pos.
+</span><span class='line'>
+</span><span class='line'>
 </span><span class='line'>(defun exchangeGene(a b pos)
 </span><span class='line'>  "exchange gene at pos in a , b"
 </span><span class='line'>  (let ((temp1) (temp2) (ret `()))
@@ -238,7 +251,7 @@
 </span><span class='line'>    )
 </span><span class='line'>  )
 </span><span class='line'>
-</span><span class='line'>;make childrens. 
+</span><span class='line'>
 </span><span class='line'>(defun coitus (a b)
 </span><span class='line'>  "a b is format of ((1.0 1.0){9})"
 </span><span class='line'>  (let ((currentpos 0)(tempab))
@@ -256,12 +269,13 @@
 </span><span class='line'>    )
 </span><span class='line'>  )
 </span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
 </span><span class='line'>;get new evolution ways 
 </span><span class='line'>(defun evolve_one_generation()
 </span><span class='line'>  (setq currentways `())
-</span><span class='line'>  (setq ways `())
-</span><span class='line'>  (while (&lt; (length ways) number_population)
-</span><span class='line'>    (push (getRandomWay) ways))
 </span><span class='line'>  (let ((randomTwo) (coitusways `()) (children))
 </span><span class='line'>  (while (&lt; (length currentways) better_population)
 </span><span class='line'>    (setq randomTwo (getRandomTwo ways))
@@ -269,7 +283,6 @@
 </span><span class='line'>    (t (push (cadr randomTwo) currentways))
 </span><span class='line'>    )
 </span><span class='line'>    )
-</span><span class='line'>  (setq ways `())
 </span><span class='line'>  (mapcar (lambda (a) (setq ways(cons a ways))) currentways)
 </span><span class='line'>  ;(message "current ways length1:%d" (length ways))
 </span><span class='line'> 
@@ -291,13 +304,18 @@
 </span><span class='line'>  )
 </span><span class='line'>)
 </span><span class='line'>
+</span><span class='line'>
 </span><span class='line'>(defun evolve()
-</span><span class='line'>  (let ((generation 0)(templength)(currentBestWay `())(currentLestLength -1.0))
-</span><span class='line'>    (while (&lt; generation 1000)
+</span><span class='line'>  (setq ways `())
+</span><span class='line'>  (while (&lt; (length ways) number_population)
+</span><span class='line'>    (push (getRandomWay) ways))
+</span><span class='line'>  (let ((generation 0)(totalLength)(templength)(currentBestWay `())(currentLestLength -1.0))
+</span><span class='line'>    (while (&lt; generation 100)
+</span><span class='line'>      (setq totalLength 0)
 </span><span class='line'>      (evolve_one_generation)
 </span><span class='line'>      (mapcar (lambda (a) 
 </span><span class='line'>      ( setq templength (caculateLength a))
-</span><span class='line'>
+</span><span class='line'>      (setq totalLength (+ totalLength templength))
 </span><span class='line'>      (cond ((equal currentLestLength -1.0) 
 </span><span class='line'>             (setq currentLestLength templength)
 </span><span class='line'>             (setq currentBestWay a)
@@ -309,13 +327,13 @@
 </span><span class='line'>            (t nil)))
 </span><span class='line'>        ways)
 </span><span class='line'>      (setq generation (1+ generation))
-</span><span class='line'>      (message "current Best Way: %s, current lest length:%f" currentBestWay currentLestLength)
+</span><span class='line'>      (message "current Best Way: %s, current lest length:%f, current averate length:%f" currentBestWay currentLestLength (/ totalLength (length ways)))
 </span><span class='line'>      )
 </span><span class='line'>    (message "Best Way: %s, The length is:%f" currentBestWay currentLestLength)
 </span><span class='line'>    )
 </span><span class='line'>  )
-</span><span class='line'>
 </span><span class='line'>(evolve)
+</span><span class='line'>
 </span></code></pre></td></tr></table></div></figure>
 
 
