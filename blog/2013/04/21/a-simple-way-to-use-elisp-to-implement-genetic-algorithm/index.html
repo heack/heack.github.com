@@ -271,16 +271,6 @@
 <span class='line-number'>146</span>
 <span class='line-number'>147</span>
 <span class='line-number'>148</span>
-<span class='line-number'>149</span>
-<span class='line-number'>150</span>
-<span class='line-number'>151</span>
-<span class='line-number'>152</span>
-<span class='line-number'>153</span>
-<span class='line-number'>154</span>
-<span class='line-number'>155</span>
-<span class='line-number'>156</span>
-<span class='line-number'>157</span>
-<span class='line-number'>158</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>
 </span><span class='line'>;define points
 </span><span class='line'>(setq env `((1.0 1.0) (2.0 7.0) (2.0 6.0) (2.0 4.0) (3.0 2.0) (5.0 8.0) (7.0 7.0 ) (7.0 4.0 ) ( 7.0 1.0 )))
@@ -311,9 +301,6 @@
 </span><span class='line'>  (sqrt (+ (expt (- (car a) (car b)) 2) (expt (- (cadr a) (cadr b)) 2)))
 </span><span class='line'>)
 </span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'> 
 </span><span class='line'>;caculate the way's length
 </span><span class='line'>(defun caculateLength(way)
 </span><span class='line'>  (let ((i 0) (ret 0.0))
@@ -328,7 +315,6 @@
 </span><span class='line'>    )
 </span><span class='line'>)
 </span><span class='line'>
-</span><span class='line'>
 </span><span class='line'>; use Tournament to get the next generation.
 </span><span class='line'>(defun getRandomTwo(population)
 </span><span class='line'>  (let ((tempways population) (ret) (temp1) (temp2))
@@ -339,7 +325,6 @@
 </span><span class='line'>    (push temp2 ret)
 </span><span class='line'>    ret)
 </span><span class='line'>)
-</span><span class='line'>
 </span><span class='line'>
 </span><span class='line'>; exchange a gene in way a and b at position pos.
 </span><span class='line'>(defun exchangeGene(a b pos)
@@ -355,7 +340,6 @@
 </span><span class='line'>    (list a b)
 </span><span class='line'>    )
 </span><span class='line'>  )
-</span><span class='line'>
 </span><span class='line'>
 </span><span class='line'>;make childrens. 
 </span><span class='line'>(defun coitus (a b)
@@ -374,10 +358,6 @@
 </span><span class='line'>    (list a b)
 </span><span class='line'>    )
 </span><span class='line'>  )
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>
 </span><span class='line'>
 </span><span class='line'>;get new evolution ways 
 </span><span class='line'>(defun evolve_one_generation()
