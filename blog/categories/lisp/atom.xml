@@ -4,7 +4,7 @@
   <title><![CDATA[Category: lisp | 关注人工智能]]></title>
   <link href="http://whomake.me/blog/categories/lisp/atom.xml" rel="self"/>
   <link href="http://whomake.me/"/>
-  <updated>2013-04-21T22:36:48+08:00</updated>
+  <updated>2013-04-21T22:50:19+08:00</updated>
   <id>http://whomake.me/</id>
   <author>
     <name><![CDATA[AI亮子]]></name>
@@ -162,7 +162,7 @@ ret)
 
 <p>  (let ((generation 0)(totalLength)(templength)(currentBestWay `())(currentLestLength -1.0))</p>
 
-<pre><code>(while (&lt; generation 100)
+<pre><code>(while (&lt; generation 300)
   (setq totalLength 0)
   (evolve_one_generation)
   (mapcar (lambda (a) 
@@ -185,8 +185,9 @@ ret)
 )
 </code></pre>
 
-<p>  )
-(evolve)</p>
+<p>  )</p>
+
+<p>(evolve)</p>
 
 <p>```</p>
 ]]></content>
