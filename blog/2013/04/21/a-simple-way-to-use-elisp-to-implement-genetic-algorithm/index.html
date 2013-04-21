@@ -267,7 +267,6 @@
 <span class='line-number'>142</span>
 <span class='line-number'>143</span>
 <span class='line-number'>144</span>
-<span class='line-number'>145</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>
 </span><span class='line'>(setq env `((1.0 1.0) (2.0 7.0) (2.0 6.0) (2.0 4.0) (3.0 2.0) (5.0 8.0) (7.0 7.0 ) (7.0 4.0 ) ( 7.0 1.0 ) (3.0 2.0) (0.0 3.0) (5.0 3.0) (4.0 5.0)))
 </span><span class='line'>(setf ways `())
@@ -405,14 +404,13 @@
 </span><span class='line'>            (t nil)))
 </span><span class='line'>        ways)
 </span><span class='line'>      (setq generation (1+ generation))
-</span><span class='line'>      (message "current Best Way: %s, current lest length:%f, current averate length:%f" currentBestWay currentLestLength (/ totalLength (length ways)))
+</span><span class='line'>      (message "current Best Way: %s, current lest length:%f, current average length:%f" currentBestWay currentLestLength (/ totalLength (length ways)))
 </span><span class='line'>      )
 </span><span class='line'>    (message "Best Way: %s, The length is:%f" currentBestWay currentLestLength)
 </span><span class='line'>    )
 </span><span class='line'>  )
 </span><span class='line'>
 </span><span class='line'>(evolve)
-</span><span class='line'>
 </span></code></pre></td></tr></table></div></figure>
 
 
