@@ -6,8 +6,11 @@
 	<title>关注人工智能</title>
     <meta name="author" content="AI亮子">
     
-	<meta name="description" content="Published on: Apr 7th, 2013 Tags: Alfred, iciba, workflow, 英汉互译 对于未来以流信息存在的网络来看, Alfred的前途不可限量.
-mac官方自带的翻译实在使用起来麻烦.这个workflow是利用了www.iciba. &hellip;">
+	<meta name="description" content="Published on: Apr 21st, 2013 Tags: elisp, genetic algorithm, lisp Here is a very simple implementation way to simulate Genetic Algorithm. 1
+2
+3
+4
+5 &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -93,6 +96,371 @@ mac官方自带的翻译实在使用起来麻烦.这个workflow是利用了www.i
 <!-- begin toload --> 
     <div id="content" class="inner">
         
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2013/04/21/a-simple-way-to-use-elisp-to-implement-genetic-algorithm/">
+		
+			A Simple Way to Use Elisp to Implement Genetic Algorithm About [Traveling Saleman Problem]</a>
+	</h2>
+    <div class="entry-content">
+    <div class="meta">
+      <div class="date">Published on: 
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-21T21:21:00+08:00" pubdate data-updated="true">Apr 21<span>st</span>, 2013</time></div>
+      <div class="tags">Tags: 
+
+
+	<a class='category' href='/blog/categories/elisp/'>elisp</a>, <a class='category' href='/blog/categories/genetic-algorithm/'>genetic algorithm</a>, <a class='category' href='/blog/categories/lisp/'>lisp</a>
+
+
+</div>
+    </div>
+		<p>Here is a very simple implementation way to simulate Genetic Algorithm.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+<span class='line-number'>109</span>
+<span class='line-number'>110</span>
+<span class='line-number'>111</span>
+<span class='line-number'>112</span>
+<span class='line-number'>113</span>
+<span class='line-number'>114</span>
+<span class='line-number'>115</span>
+<span class='line-number'>116</span>
+<span class='line-number'>117</span>
+<span class='line-number'>118</span>
+<span class='line-number'>119</span>
+<span class='line-number'>120</span>
+<span class='line-number'>121</span>
+<span class='line-number'>122</span>
+<span class='line-number'>123</span>
+<span class='line-number'>124</span>
+<span class='line-number'>125</span>
+<span class='line-number'>126</span>
+<span class='line-number'>127</span>
+<span class='line-number'>128</span>
+<span class='line-number'>129</span>
+<span class='line-number'>130</span>
+<span class='line-number'>131</span>
+<span class='line-number'>132</span>
+<span class='line-number'>133</span>
+<span class='line-number'>134</span>
+<span class='line-number'>135</span>
+<span class='line-number'>136</span>
+<span class='line-number'>137</span>
+<span class='line-number'>138</span>
+<span class='line-number'>139</span>
+<span class='line-number'>140</span>
+<span class='line-number'>141</span>
+<span class='line-number'>142</span>
+<span class='line-number'>143</span>
+<span class='line-number'>144</span>
+<span class='line-number'>145</span>
+<span class='line-number'>146</span>
+<span class='line-number'>147</span>
+<span class='line-number'>148</span>
+<span class='line-number'>149</span>
+<span class='line-number'>150</span>
+<span class='line-number'>151</span>
+<span class='line-number'>152</span>
+<span class='line-number'>153</span>
+<span class='line-number'>154</span>
+<span class='line-number'>155</span>
+<span class='line-number'>156</span>
+<span class='line-number'>157</span>
+<span class='line-number'>158</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>
+</span><span class='line'>;define points
+</span><span class='line'>(setq env `((1.0 1.0) (2.0 7.0) (2.0 6.0) (2.0 4.0) (3.0 2.0) (5.0 8.0) (7.0 7.0 ) (7.0 4.0 ) ( 7.0 1.0 )))
+</span><span class='line'>
+</span><span class='line'>(setf ways `())
+</span><span class='line'>(setf currentways `())
+</span><span class='line'>(setf number_population 60)
+</span><span class='line'>(setf better_population 30)
+</span><span class='line'>(setf child_population 30)
+</span><span class='line'>
+</span><span class='line'>;get Random Way to fill the ways.
+</span><span class='line'>(defun getRandomWay()
+</span><span class='line'>  (let ((ret) (tempenv) (num 1))
+</span><span class='line'>    (setf tempenv (copy-sequence env))
+</span><span class='line'>    (while (&gt; (length tempenv) 0)
+</span><span class='line'>      (setf num (1+ num))
+</span><span class='line'>      (let ((element))
+</span><span class='line'>  (setf element (elt tempenv (random (length tempenv))))
+</span><span class='line'>  (push element ret)
+</span><span class='line'>  (setf tempenv (delete element tempenv)))
+</span><span class='line'>      )
+</span><span class='line'>    ret
+</span><span class='line'>    )
+</span><span class='line'>)
+</span><span class='line'>
+</span><span class='line'>;basic method
+</span><span class='line'>(defun getTwoPointLength(a b)
+</span><span class='line'>  (sqrt (+ (expt (- (car a) (car b)) 2) (expt (- (cadr a) (cadr b)) 2)))
+</span><span class='line'>)
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'> 
+</span><span class='line'>;caculate the way's length
+</span><span class='line'>(defun caculateLength(way)
+</span><span class='line'>  (let ((i 0) (ret 0.0))
+</span><span class='line'>    ;(message "way is : %s" way)
+</span><span class='line'>    (while (&lt; i (1- (length way)))
+</span><span class='line'>      ;(message "here ele1:%s ele2:%s" (elt way i) (elt way (1+ i)))
+</span><span class='line'>      (setq ret (+ ret (getTwoPointLength (elt way i) (elt way (1+ i)))))
+</span><span class='line'>      ;(message "here: %f" ret)
+</span><span class='line'>      (setq i (+ i 1))
+</span><span class='line'>      )
+</span><span class='line'>    ret
+</span><span class='line'>    )
+</span><span class='line'>)
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>; use Tournament to get the next generation.
+</span><span class='line'>(defun getRandomTwo(population)
+</span><span class='line'>  (let ((tempways population) (ret) (temp1) (temp2))
+</span><span class='line'>    (setq temp1 (elt tempways (random (length tempways))))
+</span><span class='line'>    (setq tempways (delete temp1 tempways))
+</span><span class='line'>    (setq temp2 (elt tempways (random (length tempways))))
+</span><span class='line'>    (push temp1 ret)
+</span><span class='line'>    (push temp2 ret)
+</span><span class='line'>    ret)
+</span><span class='line'>)
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>; exchange a gene in way a and b at position pos.
+</span><span class='line'>(defun exchangeGene(a b pos)
+</span><span class='line'>  "exchange gene at pos in a , b"
+</span><span class='line'>  (let ((temp1) (temp2) (ret `()))
+</span><span class='line'>    ;(message "a:%s b:%s pos:%d" a b pos)
+</span><span class='line'>    (setq temp1 (elt a pos))
+</span><span class='line'>    (setq temp2 (elt b pos))
+</span><span class='line'>    (setq a (mapcar (lambda (a1) (cond ((equal a1 temp2) (setq a1 temp1)) (t a1))) a))
+</span><span class='line'>    (setq b (mapcar (lambda (b1) (cond ((equal b1 temp1) (setq b1 temp2)) (t b1))) b))
+</span><span class='line'>    (setcar (nthcdr pos a) temp2)
+</span><span class='line'>    (setcar (nthcdr pos b) temp1)
+</span><span class='line'>    (list a b)
+</span><span class='line'>    )
+</span><span class='line'>  )
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>;make childrens. 
+</span><span class='line'>(defun coitus (a b)
+</span><span class='line'>  "a b is format of ((1.0 1.0){9})"
+</span><span class='line'>  (let ((currentpos 0)(tempab))
+</span><span class='line'>    (while (&lt; currentpos (length a))
+</span><span class='line'>      (if (= (random 2) 0)
+</span><span class='line'>    ;exchange gene
+</span><span class='line'>    (progn (setq tempab (exchangeGene a b currentpos))
+</span><span class='line'>       (setf a (car tempab))
+</span><span class='line'>       (setf b (cadr tempab))
+</span><span class='line'>       )
+</span><span class='line'>  )
+</span><span class='line'>      (setq currentpos (1+ currentpos))
+</span><span class='line'>      )
+</span><span class='line'>    (list a b)
+</span><span class='line'>    )
+</span><span class='line'>  )
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>;get new evolution ways 
+</span><span class='line'>(defun evolve_one_generation()
+</span><span class='line'>  (setq currentways `())
+</span><span class='line'>  (setq ways `())
+</span><span class='line'>  (while (&lt; (length ways) number_population)
+</span><span class='line'>    (push (getRandomWay) ways))
+</span><span class='line'>  (let ((randomTwo) (coitusways `()) (children))
+</span><span class='line'>  (while (&lt; (length currentways) better_population)
+</span><span class='line'>    (setq randomTwo (getRandomTwo ways))
+</span><span class='line'>    (cond ((&lt;= (caculateLength (car randomTwo)) (caculateLength (cadr randomTwo))) (push (car randomTwo) currentways))
+</span><span class='line'>    (t (push (cadr randomTwo) currentways))
+</span><span class='line'>    )
+</span><span class='line'>    )
+</span><span class='line'>  (setq ways `())
+</span><span class='line'>  (mapcar (lambda (a) (setq ways(cons a ways))) currentways)
+</span><span class='line'>  ;(message "current ways length1:%d" (length ways))
+</span><span class='line'> 
+</span><span class='line'>  (while (&lt; (length coitusways)  child_population)
+</span><span class='line'>    (setq randomTwo (getRandomTwo currentways))
+</span><span class='line'>    ;(message "random2: %s" randomTwo)
+</span><span class='line'>    (setq children (coitus (car randomTwo) (cadr randomTwo)))
+</span><span class='line'>    ;(message "children: %s" children)
+</span><span class='line'>    (push (car children) coitusways)
+</span><span class='line'>    (push (cadr children) coitusways)
+</span><span class='line'>    (setq ways (cons (car children) ways))
+</span><span class='line'>    (setq ways (cons (cadr children) ways))
+</span><span class='line'>    )
+</span><span class='line'>  ;(setq ways (append ways currentways coitusways))
+</span><span class='line'>  ;(message "coitus ways: %d" (length coitusways))
+</span><span class='line'>  ;(message "coitus ways: %s" coitusways)
+</span><span class='line'>  ;(message "current ways length: %d" (length ways))
+</span><span class='line'>  ;(message "ways %s" ways)
+</span><span class='line'>  )
+</span><span class='line'>)
+</span><span class='line'>
+</span><span class='line'>(defun evolve()
+</span><span class='line'>  (let ((generation 0)(templength)(currentBestWay `())(currentLestLength -1.0))
+</span><span class='line'>    (while (&lt; generation 1000)
+</span><span class='line'>      (evolve_one_generation)
+</span><span class='line'>      (mapcar (lambda (a) 
+</span><span class='line'>      ( setq templength (caculateLength a))
+</span><span class='line'>
+</span><span class='line'>      (cond ((equal currentLestLength -1.0) 
+</span><span class='line'>             (setq currentLestLength templength)
+</span><span class='line'>             (setq currentBestWay a)
+</span><span class='line'>             )
+</span><span class='line'>            ((&lt; templength currentLestLength)
+</span><span class='line'>             (setq currentLestLength templength)
+</span><span class='line'>             (setq currentBestWay a)
+</span><span class='line'>             )
+</span><span class='line'>            (t nil)))
+</span><span class='line'>        ways)
+</span><span class='line'>      (setq generation (1+ generation))
+</span><span class='line'>      (message "current Best Way: %s, current lest length:%f" currentBestWay currentLestLength)
+</span><span class='line'>      )
+</span><span class='line'>    (message "Best Way: %s, The length is:%f" currentBestWay currentLestLength)
+</span><span class='line'>    )
+</span><span class='line'>  )
+</span><span class='line'>
+</span><span class='line'>(evolve)
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+		
+		
+	</div>
+
+<div class="meta">
+	
+		<span class="comments"><a href="/blog/2013/04/21/a-simple-way-to-use-elisp-to-implement-genetic-algorithm//index.html#disqus_thread">Comments</a></span>
+	
+</div>
+</article>
 
 
     <article class="post">

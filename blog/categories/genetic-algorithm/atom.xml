@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: genetic algorithm | 关注人工智能]]></title>
+  <link href="http://whomake.me/blog/categories/genetic-algorithm/atom.xml" rel="self"/>
+  <link href="http://whomake.me/"/>
+  <updated>2013-04-21T21:27:52+08:00</updated>
+  <id>http://whomake.me/</id>
+  <author>
+    <name><![CDATA[AI亮子]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[A simple way to Use Elisp to implement Genetic Algorithm about [Traveling Saleman Problem]]]></title>
+    <link href="http://whomake.me/blog/2013/04/21/a-simple-way-to-use-elisp-to-implement-genetic-algorithm/"/>
+    <updated>2013-04-21T21:21:00+08:00</updated>
+    <id>http://whomake.me/blog/2013/04/21/a-simple-way-to-use-elisp-to-implement-genetic-algorithm</id>
+    <content type="html"><![CDATA[<p>Here is a very simple implementation way to simulate Genetic Algorithm.</p>
+
+<p>```</p>
+
+<p>;define points
+(setq env `((1.0 1.0) (2.0 7.0) (2.0 6.0) (2.0 4.0) (3.0 2.0) (5.0 8.0) (7.0 7.0 ) (7.0 4.0 ) ( 7.0 1.0 )))</p>
+
+<p>(setf ways <code>())
+(setf currentways</code>())
+(setf number_population 60)
+(setf better_population 30)
+(setf child_population 30)</p>
+
+<p>;get Random Way to fill the ways.
+(defun getRandomWay()
+  (let ((ret) (tempenv) (num 1))</p>
+
+<pre><code>(setf tempenv (copy-sequence env))
+(while (&gt; (length tempenv) 0)
+  (setf num (1+ num))
+  (let ((element))
+(setf element (elt tempenv (random (length tempenv))))
+(push element ret)
+(setf tempenv (delete element tempenv)))
+  )
+ret
+)
+</code></pre>
+
+<p>)</p>
+
+<p>;basic method
+(defun getTwoPointLength(a b)
+  (sqrt (+ (expt (- (car a) (car b)) 2) (expt (- (cadr a) (cadr b)) 2)))
+)</p>
+
+<p>;caculate the way's length
+(defun caculateLength(way)
+  (let ((i 0) (ret 0.0))</p>
+
+<pre><code>;(message "way is : %s" way)
+(while (&lt; i (1- (length way)))
+  ;(message "here ele1:%s ele2:%s" (elt way i) (elt way (1+ i)))
+  (setq ret (+ ret (getTwoPointLength (elt way i) (elt way (1+ i)))))
+  ;(message "here: %f" ret)
+  (setq i (+ i 1))
+  )
+ret
+)
+</code></pre>
+
+<p>)</p>
+
+<p>; use Tournament to get the next generation.
+(defun getRandomTwo(population)
+  (let ((tempways population) (ret) (temp1) (temp2))</p>
+
+<pre><code>(setq temp1 (elt tempways (random (length tempways))))
+(setq tempways (delete temp1 tempways))
+(setq temp2 (elt tempways (random (length tempways))))
+(push temp1 ret)
+(push temp2 ret)
+ret)
+</code></pre>
+
+<p>)</p>
+
+<p>; exchange a gene in way a and b at position pos.
+(defun exchangeGene(a b pos)
+  "exchange gene at pos in a , b"
+  (let ((temp1) (temp2) (ret `()))</p>
+
+<pre><code>;(message "a:%s b:%s pos:%d" a b pos)
+(setq temp1 (elt a pos))
+(setq temp2 (elt b pos))
+(setq a (mapcar (lambda (a1) (cond ((equal a1 temp2) (setq a1 temp1)) (t a1))) a))
+(setq b (mapcar (lambda (b1) (cond ((equal b1 temp1) (setq b1 temp2)) (t b1))) b))
+(setcar (nthcdr pos a) temp2)
+(setcar (nthcdr pos b) temp1)
+(list a b)
+)
+</code></pre>
+
+<p>  )</p>
+
+<p>;make childrens.
+(defun coitus (a b)
+  "a b is format of ((1.0 1.0){9})"
+  (let ((currentpos 0)(tempab))</p>
+
+<pre><code>(while (&lt; currentpos (length a))
+  (if (= (random 2) 0)
+  ;exchange gene
+  (progn (setq tempab (exchangeGene a b currentpos))
+     (setf a (car tempab))
+     (setf b (cadr tempab))
+     )
+)
+  (setq currentpos (1+ currentpos))
+  )
+(list a b)
+)
+</code></pre>
+
+<p>  )</p>
+
+<p>;get new evolution ways
+(defun evolve_one_generation()
+  (setq currentways <code>())
+  (setq ways</code>())
+  (while (&lt; (length ways) number_population)</p>
+
+<pre><code>(push (getRandomWay) ways))
+</code></pre>
+
+<p>  (let ((randomTwo) (coitusways `()) (children))
+  (while (&lt; (length currentways) better_population)</p>
+
+<pre><code>(setq randomTwo (getRandomTwo ways))
+(cond ((&lt;= (caculateLength (car randomTwo)) (caculateLength (cadr randomTwo))) (push (car randomTwo) currentways))
+  (t (push (cadr randomTwo) currentways))
+  )
+)
+</code></pre>
+
+<p>  (setq ways `())
+  (mapcar (lambda (a) (setq ways(cons a ways))) currentways)
+  ;(message "current ways length1:%d" (length ways))</p>
+
+<p>  (while (&lt; (length coitusways)  child_population)</p>
+
+<pre><code>(setq randomTwo (getRandomTwo currentways))
+;(message "random2: %s" randomTwo)
+(setq children (coitus (car randomTwo) (cadr randomTwo)))
+;(message "children: %s" children)
+(push (car children) coitusways)
+(push (cadr children) coitusways)
+(setq ways (cons (car children) ways))
+(setq ways (cons (cadr children) ways))
+)
+</code></pre>
+
+<p>  ;(setq ways (append ways currentways coitusways))
+  ;(message "coitus ways: %d" (length coitusways))
+  ;(message "coitus ways: %s" coitusways)
+  ;(message "current ways length: %d" (length ways))
+  ;(message "ways %s" ways)
+  )
+)</p>
+
+<p>(defun evolve()
+  (let ((generation 0)(templength)(currentBestWay `())(currentLestLength -1.0))</p>
+
+<pre><code>(while (&lt; generation 1000)
+  (evolve_one_generation)
+  (mapcar (lambda (a) 
+    ( setq templength (caculateLength a))
+
+    (cond ((equal currentLestLength -1.0) 
+           (setq currentLestLength templength)
+           (setq currentBestWay a)
+           )
+          ((&lt; templength currentLestLength)
+           (setq currentLestLength templength)
+           (setq currentBestWay a)
+           )
+          (t nil)))
+      ways)
+  (setq generation (1+ generation))
+  (message "current Best Way: %s, current lest length:%f" currentBestWay currentLestLength)
+  )
+(message "Best Way: %s, The length is:%f" currentBestWay currentLestLength)
+)
+</code></pre>
+
+<p>  )</p>
+
+<p>(evolve)</p>
+
+<p>```</p>
+]]></content>
+  </entry>
+  
+</feed>
